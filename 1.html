@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <style>
+        body {
+            background-image: url('10.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: 'Cursive', Arial, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .message-container {
+            background: linear-gradient(135deg, red, #fff0f5);
+            padding: 5%;
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: rgb(255, 238, 0);
+            font-size: clamp(24px, 5vw, 36px);
+            font-family: 'Script MT', cursive;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: clamp(16px, 3vw, 30px);
+            color: white;
+            font-family: 'Script MT', cursive;
+            line-height: 1.5;
+            margin: 15px 0;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: clamp(20px, 4vw, 30px);
+            color: goldenrod;
+            font-family: 'Brush Script MT', cursive;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        button {
+            background-color: goldenrod;
+            color: white;
+            border: none;
+            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+            font-size: clamp(14px, 2.5vw, 18px);
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: red;
+            transform: scale(1.05);
+        }
+
+        #music-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: clamp(30px, 8vw, 50px);
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            z-index: 1000;
+        }
+
+        #music-icon:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .zoom-out {
+            animation: zoomOut 0.5s forwards;
+        }
+
+        @keyframes zoomOut {
+            from { transform: scale(1); }
+            to { transform: scale(0); opacity: 0; }
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .message-container {
+                padding: 20px;
+                margin: 10px auto;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .message-container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            #music-icon {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <h1>MY DEAR LOVE</h1>
+        <p>
+            Though my love for you is one-sided, it is pure and endless. I see you love another, yet in every prayer, I pray God grants you eternal happiness—even if it's not with me.
+            You rare the most beautiful thing that has ever happened to me. My heart beats faster when I think of you, and my eyes sparkle at your smile.
+            Though we are apart now, our love will always be present in my thoughts and prayers. May God bless you abundantly and may He grant you all your desires.
+            Happy Birthday!
+            With Love,
+        </p>
+        <div class="signature">Rishabh Yadav</div>
+    </div>
+    <div class="button-container">
+        <button onclick="navigateWithEffect()">Click Here</button>
+    </div>
+
+    <img id="music-icon" src="MUSIC.png" alt="Music Icon">
+
+    <audio id="background-music" loop autoplay>
+        <source src="Birthday-Hindi-Song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const musicIcon = document.getElementById('music-icon');
+        const backgroundMusic = document.getElementById('background-music');
+
+        musicIcon.addEventListener('click', function() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                musicIcon.src = '16(1).png';
+            } else {
+                backgroundMusic.pause();
+                musicIcon.src = '16(1).png';
+            }
+        });
+
+        function navigateWithEffect() {
+            const body = document.body;
+            body.classList.add('zoom-out');
+            setTimeout(() => {
+                window.location.href = '2.html';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

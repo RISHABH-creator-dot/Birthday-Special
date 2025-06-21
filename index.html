@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Wishes</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('1.jpg');
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        flex-direction: column;
+        overflow: hidden;
+        transition: transform 0.5s ease;
+    }
+
+    .message {
+        font-size: clamp(24px, 5vw, 48px);
+        color: goldenrod;
+        font-family: 'Lucida Handwriting', cursive;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+        animation: glow 1.5s infinite alternate;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .countdown-number {
+        font-size: clamp(48px, 12vw, 96px);
+        font-weight: bold;
+    }
+
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        to {
+            text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 30px rgba(255, 215, 0, 0.8);
+        }
+    }
+
+    .music-icon {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: clamp(30px, 8vw, 50px);
+        height: auto;
+        cursor: pointer;
+    }
+
+    .cake-image {
+        width: 80%;
+        max-width: 400px;
+        margin-top: 5px;
+    }
+
+    .final-message {
+        font-size: clamp(16px, 4vw, 32px);
+        margin-top: 5px;
+    }
+
+    .button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: clamp(14px, 2.5vw, 24px);
+        color: white;
+        background-color: goldenrod;
+        border: 2px solid;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Lucida Handwriting', cursive;
+        transition: background-color 0.3s;
+    }
+
+    .button:hover {
+        background-color: red;
+    }
+
+    .emoji {
+        position: absolute;
+        top: -50px;
+        font-size: clamp(20px, 3vw, 40px);
+        animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(100vh);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .message {
+            font-size: clamp(20px, 6vw, 40px);
+        }
+        .countdown-number {
+            font-size: clamp(40px, 14vw, 80px);
+        }
+        .final-message {
+            font-size: clamp(14px, 5vw, 28px);
+        }
+        .button {
+            font-size: clamp(12px, 3vw, 22px);
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .message {
+            font-size: clamp(18px, 7vw, 36px);
+        }
+        .countdown-number {
+            font-size: clamp(36px, 16vw, 72px);
+        }
+        .final-message {
+            font-size: clamp(12px, 6vw, 24px);
+        }
+        .button {
+            font-size: clamp(10px, 4vw, 20px);
+            padding: 8px 16px;
+        }
+        .cake-image {
+            width: 90%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="message" id="message">
+        Loading special wishes! 🎉
+    </div>
+    <audio id="background-music" loop>
+        <source src="Birthday-Hindi-Song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <img src="MUSIC.png"Music Icon" class="music-icon" onclick="toggleMusic()">
+
+    <img src="MUSIC.png"Music Icon" class="music-icon"onclick="toggleMusic()">
+
+    <script>
+        const music = document.getElementById('background-music');
+        const messageElement = document.getElementById('message');
+        let countdown = 1; // Start from 1
+        const colors = ['rgb(236, 2, 103)', 'red', 'orange', 'goldenrod'];
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+
+        function startCountdown() {
+            music.play(); // Start playing music when countdown starts
+            const countdownInterval = setInterval(() => {
+                messageElement.innerHTML = `<span class="countdown-number">${countdown}</span>`;
+                messageElement.style.color = colors[countdown - 1];
+                countdown++;
+                if (countdown > 4) { // Stop when countdown exceeds 4
+                    clearInterval(countdownInterval);
+                    showMessages();
+                }
+            }, 1200);
+        }
+
+        function showMessages() {
+            messageElement.textContent = "Happy Birthday!";
+            startFallingEmojis();
+            setTimeout(() => {
+                messageElement.innerHTML = "<span style='font-size: 5vw;'>Happy Birthday, my love!</span><br<br><span class='final-message'> Many many returns of the day.</span><br><button class='button' onclick=\"slideOut()\">Click Here</button>";
+            }, 3000);
+        }
+
+        function startFallingEmojis() {
+            const emojis = ['🎉', '🎊', '🎈', '✨', '🥳'];
+            const emojiContainer = document.createElement('div');
+            document.body.appendChild(emojiContainer);
+
+            function createEmoji() {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji';
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emojiContainer.appendChild(emoji);
+
+                setTimeout(() => {
+                    emoji.remove();
+                }, 5000);
+            }
+
+            setInterval(createEmoji, 100);
+        }
+
+        function slideOut() {
+            document.body.style.transform = 'translateX(-100vw)';
+            setTimeout(() => {
+                window.location.href = '1.html';
+            }, 500);
+        }
+
+        setTimeout(startCountdown, 500); // Changed from 3000 to 2000
+    </script>
+</body>
+</html>

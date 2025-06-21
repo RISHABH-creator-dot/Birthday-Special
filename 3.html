@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Background with Video</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+            font-size: clamp(24px, 5vw, 40px);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin: 20px;
+        }
+        video {
+            width: 90%;
+            max-width: 640px;
+            height: auto;
+            border: 2px solid white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+        }
+        button {
+            background-color: rgb(220, 85, 107);
+            color: white;
+            border: none;
+            padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 40px);
+            font-size: clamp(16px, 2.5vw, 18px);
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: red;
+            transform: scale(1.05);
+        }
+        .fade-out {
+            animation: fadeOut 0.5s forwards;
+        }
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Highlights of Memories</h1>
+     <video controls>
+        <source src="VID_5.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+     <video controls>
+        <source src="VID_2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button onclick="navigateWithEffect()">Click here</button>
+
+    <script>
+        function navigateWithEffect() {
+            const body = document.body;
+            body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = '4.html';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

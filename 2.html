@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Image Grid</title>
+<style>
+  body {
+    background-color: #f8c8dc;
+    margin: 0;
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    transition: opacity 0.5s ease;
+  }
+
+  h1 {
+    color: goldenrod;
+    font-size: clamp(24px, 5vw, 40px);
+    text-align: center;
+    margin: 20px 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+  .image-grid {
+    display: grid;
+    gap: 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
+  }
+
+  /* Grid layout for different screen sizes */
+  @media screen and (min-width: 1024px) {
+    .image-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 150px;
+    }
+  }
+
+  @media screen and (max-width: 1023px) and (min-width: 768px) {
+    .image-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 140px;
+    }
+  }
+
+  @media screen and (max-width: 767px) and (min-width: 480px) {
+    .image-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 130px;
+    }
+  }
+
+  @media screen and (max-width: 479px) {
+    .image-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 120px;
+    }
+  }
+
+  .image-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Make the first image larger */
+  @media screen and (min-width: 480px) {
+    .image-grid img:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .image-grid img:nth-child(n+5) {
+      grid-row: span 2;
+    }
+
+    .image-grid img:nth-child(9) {
+      grid-row: span 1;
+    }
+  }
+
+  .bottom-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 10px;
+    position: relative;
+    margin-top: 20px;
+  }
+
+  button {
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px);
+    font-size: clamp(16px, 2.5vw, 18px);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 0 20px;
+  }
+
+  button:hover {
+    background-color: red;
+    transform: scale(1.05);
+  }
+
+  #music-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: clamp(40px, 8vw, 60px);
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: 1000;
+  }
+
+  #music-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 480px) {
+    body {
+      padding: 10px;
+    }
+
+    .bottom-section {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    #music-icon {
+      position: static;
+      margin-top: 15px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <h1>Memories</h1>
+
+  <div class="image-grid">
+    <img src="1.jpg" alt="Image 1" loading="lazy" />
+    <img src="2.jpg" alt="Image 2" loading="lazy" />
+    <img src="3.jpg" alt="Image 3" loading="lazy" />
+    <img src="4.jpg" alt="Image 4" loading="lazy" />
+    <img src="5.jpg" alt="Image 5" loading="lazy" />
+    <img src="6.jpg" alt="Image 6" loading="lazy" />
+    <img src="7.jpg" alt="Image 7" loading="lazy" />
+    <img src="8.jpg" alt="Image 8" loading="lazy" />
+    <img src="9.jpg" alt="Image 9" loading="lazy" />
+    <img src="10.jpg" alt="Image 10" loading="lazy" />
+    <img src="11.jpg" alt="Image 11" loading="lazy" />
+    <img src="12.jpg" alt="Image 12" loading="lazy" />
+    <img src="13.jpg" alt="Image 13" loading="lazy" />
+    <img src="14.jpg" alt="Image 14" loading="lazy" />
+    <img src="15.jpg" alt="Image 15" loading="lazy" />
+    <img src="16.jpg" alt="Image 16" loading="lazy" />
+    <img src="17.jpg" alt="Image 17" loading="lazy" />
+    <img src="18.jpg.webp" alt="Image 18" loading="lazy" />
+    <img src="19.jpg.webp" alt="Image19" loading="lazy" />
+    <img src="20.jpg.webp" alt="Image 20" loading="lazy" />
+    <img src="21.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="22.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="23.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="24.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="25.webp.jpg"alt="Image 21" loading="lazy" />
+    <img src="26.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="27.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="28.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="29.jpg.webp"alt="Image 21" loading="lazy" />
+    <img src="30.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="31.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="32.jpg.webp"alt="Image 32" loading="lazy" />
+    <img src="33.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="34.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="35.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="36.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="37.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="38.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="39.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="40.jpg.webp"alt="Image 30" loading="lazy" />
+    <img src="41.jpg.webp"alt="Image 41" loading="lazy" />
+  </div>
+
+  <div class="bottom-section">
+    <button id="navigate-button">click here</button>
+    <img id="music-icon" src="MUSIC.png" alt="Music Icon" />
+  </div>
+
+  <audio id="background-music" loop autoplay>
+    <source src="Birthday-Hindi-Song.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const musicIcon = document.getElementById('music-icon');
+    const backgroundMusic = document.getElementById('background-music');
+    const navigateButton = document.getElementById('navigate-button');
+
+    musicIcon.addEventListener('click', function () {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+      } else {
+        backgroundMusic.pause();
+      }
+    });
+
+    navigateButton.addEventListener('click', function () {
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = '3.html';
+      }, 500);
+    });
+  </script>
+</body>
+</html>
